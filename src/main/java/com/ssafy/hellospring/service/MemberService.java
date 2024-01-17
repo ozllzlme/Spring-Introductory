@@ -3,11 +3,6 @@ package com.ssafy.hellospring.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import com.ssafy.hellospring.domain.Member;
 import com.ssafy.hellospring.repository.MemberRepository;
 import com.ssafy.hellospring.repository.MemoryMemberRepository;
@@ -15,7 +10,6 @@ import com.ssafy.hellospring.repository.MemoryMemberRepository;
 public class MemberService {
 	private final MemberRepository memberRepository;
 
-	@Autowired
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
