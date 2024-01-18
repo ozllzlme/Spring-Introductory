@@ -1,14 +1,25 @@
 package com.ssafy.hellospring;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.ssafy.hellospring.repository.JpaMemberRepository;
 import com.ssafy.hellospring.repository.MemberRepository;
-import com.ssafy.hellospring.repository.MemoryMemberRepository;
 import com.ssafy.hellospring.service.MemberService;
+
+import jakarta.persistence.EntityManager;
 
 @Configuration
 public class SpringConfig {
+
+
+	private EntityManager em;
+
+	@Autowired
+	public SpringConfig(EntityManager em){
+		this.em = em;
+	}
 
 	@Bean
 	public MemberService memberService(){
@@ -17,6 +28,6 @@ public class SpringConfig {
 
 	@Bean
 	public MemberRepository memberRepository(){
-		return  new MemoryMemberRepository();
+		return new JpaMemberRepository(em);
 	}
 }
